@@ -10,4 +10,3 @@ EXPOSE 5000
 
 CMD [ "python", "-m" , "flask", "--app", "city_redis", "run", "--host=0.0.0.0"]
 
-
