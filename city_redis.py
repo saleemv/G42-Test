@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify
 import redis
+import os
 
 app = Flask(__name__)
-red = redis.Redis(host='localhost', port=6379, db=0, charset="utf-8", decode_responses=True)
+
+REDIS_SERVER = os.getenv("REDIS_SERVER")
+red = redis.Redis(host=REDIS_SERVER, port=6379, db=0, charset="utf-8", decode_responses=True)
 
 
 @app.route('/')

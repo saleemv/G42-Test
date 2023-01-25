@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: api
+  template:
+    metadata:
+      labels:
+        component: api
+    spec:
+      containers:
+        - name: city-app
+          image: saleemv/g42:v1.1
+          ports:
+            - containerPort: 5000
+          env:
+            - name: REDIS_SERVER
+              value: redis-clusterip
+
