@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.redisIP }}
+  labels:
+    {{- include "city-helm.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.redisPort }}
+      targetPort: {{ .Values.redisPort }}
+  selector:
+    component: redis

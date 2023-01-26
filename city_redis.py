@@ -6,9 +6,11 @@ app = Flask(__name__)
 
 REDIS_SERVER = os.getenv("REDIS_SERVER")
 red = redis.Redis(host=REDIS_SERVER, port=6379, db=0, charset="utf-8", decode_responses=True)
-
-
 @app.route('/')
+def landing():
+    return jsonify(message='This is the G42 Assignment!')
+
+@app.route('/health')
 def health_check():
     return jsonify(message='OK')
 
