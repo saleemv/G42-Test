@@ -12,7 +12,7 @@ image:
 
 imagePullSecrets: []
 nameOverride: "city"
-fullnameOverride: "city-app"
+fullnameOverride: ""
 
 #serviceAccount:
 #  # Specifies whether a service account should be created
@@ -80,3 +80,15 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+redisImage:
+  repository: redis
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+redisPersistence:
+    volume: redis-pvc
+    path: /data
+
+redisPort: 6379
+redisIP: redis-ip
