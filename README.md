@@ -20,6 +20,9 @@ repository.
 Python Flask app, using Redis.
 
 #### Docker/image details: 
+
+| Details | Details|
+| ---------- | -------- |
 | Repo | [saleemv](https://hub.docker.com/repository/docker/saleemv/g42/general) |
 | Image | g42 |
 | Latest tag | latest | 
