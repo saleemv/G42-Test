@@ -25,6 +25,4 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
 
     - name: Push the Docker image
-      run: |
-        docker push saleemv/g42:$(date +%s)
-        docker push saleemv/g42:latest
+      run: docker push saleemv/g42 --all-tags
