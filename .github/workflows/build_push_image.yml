@@ -26,5 +26,5 @@ jobs:
 
     - name: Push the Docker image
       run: |
-        docker push --tag saleemv/G42:$(date +%s)
-        docker push --tag saleemv/G42:latest
+        docker push saleemv/g42:$(date +%s)
+        docker push saleemv/g42:latest
