@@ -21,11 +21,11 @@ Python Flask app, using Redis.
 
 #### Docker/image details: 
 
-| Details | Details|
-| ---------- | -------- |
-| Repo | [saleemv](https://hub.docker.com/repository/docker/saleemv/g42/general) |
-| Image | g42 |
-| Latest tag | latest | 
+| Details    | Details                                                                 |
+|------------|-------------------------------------------------------------------------|
+| Repo       | [saleemv](https://hub.docker.com/repository/docker/saleemv/g42/general) |
+| Image      | g42                                                                     |
+| Latest tag | latest                                                                  | 
 
 #### Endpoints:
 - _/health_  **[GET]** for health check
@@ -37,14 +37,20 @@ Python Flask app, using Redis.
 The k8 directory contains
 1. Deployment yaml for application
 2. Deployment yaml for redis
-3. Perisistent volume
-4. Service - Nodeport (port 30003) for the app.
-5. Service - ClusterIp for redis.
+3. Persistent volume
+4. Service - Nodeport (port 30003) for the app. (Optional - For setup before nginx ingress)
+5. Service - ClusterIP for app. (Used by the nginx-ingress controller)
+6. Service - ClusterIp for redis.
+7. Ingress config files. Controller need to be installed using helm. We use this [ingress](https://kubernetes.github.io/ingress-nginx/deploy/#quick-start)
 
-NOTE: The app accessible on port 30003 since i'm using NodePort service. Will be available on 80 after I setup Ingress
+NOTE: The app accessible on port 30003 since I'm using NodePort service. Will be available on 80 after I set up Ingress
 
 To deploy using K8 - 
-` cd k8 && kubectl apply -f . ` 
+` helm upgrade --install ingress-nginx ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --namespace ingress-nginx --create-namespace `
+
+`cd k8 && kubectl apply -f . ` 
 
 #### Helm chart
 All helm files in city-helm directory. But we need a storage for our redis, and we have the PVC yaml file K8 directory.
