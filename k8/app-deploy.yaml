@@ -14,10 +14,9 @@ spec:
     spec:
       containers:
         - name: city-app
-          image: saleemv/g42:v1.1
+          image: saleemv/g42:latest
           ports:
             - containerPort: 5000
           env:
             - name: REDIS_SERVER
               value: redis-clusterip
-
